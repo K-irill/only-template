@@ -1,0 +1,35 @@
+.counter-wrraper {
+    $root: &;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 720px;
+    margin: 347px auto 294px auto;
+
+    &__title {
+        cursor: default;
+        font-size: 36px;
+        color: $color-counter;
+        margin-bottom: 71px;
+    }
+
+    &__value {
+        cursor: default;
+        font-size: 128px;
+        color: $color-counter;
+        margin-bottom: 108px;
+    }
+
+    &__btn {
+        width: 152px;
+        height: 63px;
+        background: $blue-btn;
+        border-radius: 30px;
+        font-size: 16px;
+        color: $white;
+
+        &:hover {
+            background: $blue-hover-btn;
+        }
+    }
+}

@@ -1,0 +1,8 @@
+mixin slider(props)
+    .slider&attributes(attributes)
+        .swiper
+            .swiper-wrapper
+                each slide in props
+                    +slider-item(slide)
+            .swiper-button-prev.slider__btn-prev
+            .swiper-button-next.slider__btn-next

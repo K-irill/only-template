@@ -1,0 +1,38 @@
+.slider {
+    $root: &;
+    max-width: 1920px;
+
+    &__btn-prev {
+        width: 60px;
+        height: 60px;
+        background-color: $white;
+        left: 50px;
+        border-radius: 50%;
+
+        &:after {
+            font-size: 15px;
+        }
+
+        &:hover {
+            transition: 1s;
+            background-color: $gray-hover;
+        }
+    }
+
+    &__btn-next {
+        width: 60px;
+        height: 60px;
+        background-color: $white;
+        right: 50px;
+        border-radius: 50%;
+
+        &:after {
+            font-size: 15px;
+        }
+
+        &:hover {
+            transition: 1s;
+            background-color: $gray-hover;
+        }
+    }
+}
