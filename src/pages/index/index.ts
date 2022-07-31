@@ -34,9 +34,24 @@ export default {
                 }
             }
 
-            new CounterValue(getComponent("counter-value"));
+            const counterValues = getComponents(
+                "counter-value",
+                next.container
+            );
 
-            new Modal(getComponent("modal"));
+            if (counterValues.length) {
+                for (const counterValue of counterValues) {
+                    new CounterValue(counterValue);
+                }
+            }
+
+            const modals = getComponents("modal", next.container);
+
+            if (modals.length) {
+                for (const modal of modals) {
+                    new Modal(modal);
+                }
+            }
 
             new Swiper(".swiper", {
                 allowTouchMove: false,
