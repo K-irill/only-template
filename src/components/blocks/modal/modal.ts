@@ -1,11 +1,8 @@
 import Component, { ComponentProps } from "@/base/component";
 
 export default class Modal extends Component {
-    modal: HTMLElement;
-
     constructor(element: ComponentProps) {
         super(element);
-        this.modal = document.querySelector(".modal")!;
 
         document.addEventListener("click", this.controlModal);
     }
@@ -23,10 +20,10 @@ export default class Modal extends Component {
     };
 
     openModal = () => {
-        this.modal.classList.add("modal_visible");
+        this.nRoot.classList.add("modal_visible");
     };
 
     closeModal = () => {
-        this.modal.classList.remove("modal_visible");
+        this.nRoot.classList.remove("modal_visible");
     };
 }
