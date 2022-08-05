@@ -1,39 +1,28 @@
 import Component, { ComponentProps } from "@/base/component";
-import { changeValueMain } from "@/pages/index";
-
 export default class Counter extends Component {
     value: number;
     counterValue: HTMLElement;
-    decrementBtn: HTMLElement;
+    decrementBtn: HTMLButtonElement;
+    incrementBtn: HTMLButtonElement;
 
     constructor(element: ComponentProps) {
         super(element);
 
         this.value = 0;
-        this.counterValue = this.nRoot.querySelector(".counter__value")!;
-        this.decrementBtn = this.nRoot.querySelector(
-            ".counter__btn-decrement"
-        )!;
+        this.counterValue = this.getElement("value")!;
+        this.decrementBtn = this.getElement("btn-decrement")!;
+        this.incrementBtn = this.getElement("btn-increment")!;
         this.nRoot.addEventListener("click", this.clickHandler);
     }
 
     clickHandler = (e: Event) => {
-        const btnDecrement = (<HTMLElement>e.target).closest(
-            ".counter__btn-decrement"
-        );
-        const btnIncrement = (<HTMLElement>e.target).closest(
-            ".counter__btn-increment"
-        );
+        if ((<HTMLElement>e.target).contains(this.decrementBtn)) {
+            this.decrement();
+        } else if ((<HTMLElement>e.target).contains(this.incrementBtn)) {
+            this.increment();
+        }
 
-        if (!btnDecrement && !btnIncrement) return;
-
-        btnIncrement ? this.increment() : this.decrement();
-
-        this.value === 0
-            ? this.decrementBtn.setAttribute("disabled", "true")
-            : this.decrementBtn.removeAttribute("disabled");
-
-        changeValueMain(this.value);
+        this.decrementBtn.disabled = this.value === 0;
     };
 
     decrement = () => (this.counterValue.textContent = `${--this.value}`);
