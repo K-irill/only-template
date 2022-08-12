@@ -20,18 +20,18 @@ resize(setVhCssVariable);
 export const header = new Header(getComponent("header"));
 export const footer = new Footer(getComponent("footer"));
 
-const preloaderElem = getComponent("loader");
+const preloaderContainer = getComponent("loader");
 let loader: Loader;
 
-if (preloaderElem.component) {
-    loader = new Loader(preloaderElem);
+if (preloaderContainer.component) {
+    loader = new Loader(preloaderContainer);
 }
 
-const transitionElem = getComponent("transitions");
+const transitionContainer = getComponent("transitions");
 let transition: Transitions;
 
-if (transitionElem.component) {
-    transition = new Transitions(transitionElem);
+if (transitionContainer.component) {
+    transition = new Transitions(transitionContainer);
 }
 
 barba.use(barbaPrefetch);
