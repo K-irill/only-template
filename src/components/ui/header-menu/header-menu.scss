@@ -4,37 +4,44 @@
     justify-content: center;
     text-transform: uppercase;
     flex-grow: 1;
-    
+
     .header-menu__items {
         position: relative;
         cursor: pointer;
         margin-right: 40px;
         color: $color-link;
-        transition: transform 5s ease-out;
-        transform: translateY(0);
-        transition-delay: 1s;
 
-    &_activ {
-        &:after{
-            content: '';
+        &:after {
+            content: "";
             position: absolute;
             left: 0;
             bottom: 1px;
-            width: 100%;
+            width: 0px;
+            transition: width 0.6s cubic-bezier(0.47, 0, 0.745, 0.715);
             height: 1px;
             background-color: $color-link;
-            
         }
-    }
 
-        &:hover {
-            &:after{
-                content: '';
+        &_activ {
+            &:after {
+                content: "";
                 position: absolute;
                 left: 0;
                 bottom: 1px;
                 width: 100%;
-                transition: width 3s ease-in-out;
+                height: 1px;
+                background-color: $color-link;
+            }
+        }
+
+        &:hover {
+            &:after {
+                content: "";
+                position: absolute;
+                left: 0;
+                bottom: 1px;
+                width: 100%;
+                transition: width 0.3s cubic-bezier(0.29, 0.18, 0.26, 0.83);
                 height: 1px;
                 background-color: $color-link;
             }

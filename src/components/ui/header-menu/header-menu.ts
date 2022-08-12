@@ -1,4 +1,4 @@
-import Component, { ComponentProps } from '@/base/component';
+import Component, { ComponentProps } from "@/base/component";
 
 export default class HeaderMenu extends Component {
     path: string;
@@ -7,30 +7,28 @@ export default class HeaderMenu extends Component {
     constructor(element: ComponentProps) {
         super(element);
 
-        this.path = '/'
-        this.links = this.nRoot.querySelectorAll('.header-menu__items');
+        this.path = "/";
+        this.links = this.nRoot.querySelectorAll(".header-menu__items");
     }
 
-    setPath = (newPath: string)=> {
+    setPath = (newPath: string) => {
         this.path = newPath;
 
         this.removeActivLink();
         this.setActiveMenuLink();
-        
-    }
- 
-    setActiveMenuLink = ()=> {
-        this.links.forEach((el)=> {
-            if (el.getAttribute('href')=== this.path) {
-                el.classList.add('header-menu__items_activ')
+    };
+
+    setActiveMenuLink = () => {
+        this.links.forEach((el) => {
+            if (el.getAttribute("href") === this.path) {
+                el.classList.add("header-menu__items_activ");
             }
-        })
-    }
+        });
+    };
 
     removeActivLink = () => {
-        this.links.forEach((el) => el.classList.remove('header-menu__items_activ'));
-    }
-
-
-    
+        this.links.forEach((el) =>
+            el.classList.remove("header-menu__items_activ")
+        );
+    };
 }

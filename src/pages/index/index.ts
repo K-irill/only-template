@@ -1,18 +1,17 @@
 import CounterWrraper from "@/components/blocks/counter-wrraper/counter-wrraper";
 import SliderItem from "@/components/blocks/slider-item/slider-item";
-import Header from "@/components/common/header/header";
 import Spoiler from "@/components/ui/spoiler/spoiler";
 import { getComponent, getComponents } from "@/helpers/helpers";
 import { ITransitionData } from "@barba/core/dist/core/src/defs";
+
+let spoilers: Spoiler[];
+let sliderItems: SliderItem[];
+let counterWrraper: CounterWrraper;
 
 export default {
     namespace: "common",
     async beforeEnter({ next }: ITransitionData) {
         try {
-            let header: Header;
-            header = new Header(getComponent('header'))
-            header.setNewPath(next.url.path as string)
-
             const spoilers = getComponents("spoiler", next.container);
 
             if (spoilers.length) {
@@ -29,21 +28,19 @@ export default {
                 }
             }
 
-            const counterWrrapers = getComponents(
-                "counter-wrraper",
-                next.container
-            );
+            const counterWrraper = getComponent("counter-wrraper");
 
-            if (counterWrrapers.length) {
-                for (const counterWrraper of counterWrrapers) {
-                    new CounterWrraper(counterWrraper);
-                }
+            if (counterWrraper.component) {
+                new CounterWrraper(counterWrraper);
             }
         } catch (e) {
             console.error(e);
         }
     },
     beforeLeave() {
+        spoilers.forEach((spoiler) => spoiler.destroy());
+        sliderItems.forEach((slider) => slider.destroy());
+        counterWrraper.destroy();
     },
 
     afterLeave() {},

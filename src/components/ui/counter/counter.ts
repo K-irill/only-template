@@ -28,4 +28,8 @@ export default class Counter extends Component {
     decrement = () => (this.counterValue.textContent = `${--this.value}`);
 
     increment = () => (this.counterValue.textContent = `${++this.value}`);
+
+    destroy = () => {
+        this.nRoot.removeEventListener("click", this.clickHandler);
+    };
 }
