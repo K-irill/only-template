@@ -1,6 +1,16 @@
 .header {
     $root: &;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    padding: 33px 40px;
+    font-size: 16px;
+
+.only__logo {
+cursor: pointer;
+
+    svg {
+        width: 69px;
+        height: 24px;
+    }
+}
 }

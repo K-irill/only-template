@@ -1,0 +1,6 @@
+mixin header-menu(props)
+    .header-menu&attributes(attributes)
+        each page, i in props
+            a(href!= page.path).header-menu__items!= page.name
+
+
