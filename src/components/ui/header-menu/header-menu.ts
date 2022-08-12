@@ -2,13 +2,13 @@ import Component, { ComponentProps } from "@/base/component";
 
 export default class HeaderMenu extends Component {
     path: string;
-    links: NodeListOf<HTMLAnchorElement>;
+    links: HTMLAnchorElement[];
 
     constructor(element: ComponentProps) {
         super(element);
 
         this.path = "/";
-        this.links = this.nRoot.querySelectorAll(".header-menu__items");
+        this.links = this.getElements("items");
     }
 
     setPath = (newPath: string) => {
@@ -20,7 +20,7 @@ export default class HeaderMenu extends Component {
 
     setActiveMenuLink = () => {
         this.links.forEach((el) => {
-            if (el.getAttribute("href") === this.path) {
+            if (el.pathname === this.path) {
                 el.classList.add("header-menu__items_activ");
             }
         });
