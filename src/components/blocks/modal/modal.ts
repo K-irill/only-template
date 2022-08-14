@@ -40,4 +40,8 @@ export default class Modal extends Component {
         const activeCounterValue = this.slider.getActiveCounterValue();
         this.onClose(activeCounterValue);
     };
+
+    destroy = () => {
+        this.nRoot.removeEventListener("click", this.controlModal);
+    };
 }

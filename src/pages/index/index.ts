@@ -1,8 +1,12 @@
 import CounterWrraper from "@/components/blocks/counter-wrraper/counter-wrraper";
 import SliderItem from "@/components/blocks/slider-item/slider-item";
 import Spoiler from "@/components/ui/spoiler/spoiler";
-import { getComponents } from "@/helpers/helpers";
+import { getComponent, getComponents } from "@/helpers/helpers";
 import { ITransitionData } from "@barba/core/dist/core/src/defs";
+
+let spoilers: Spoiler[];
+let sliderItems: SliderItem[];
+let counterWrraper: CounterWrraper;
 
 export default {
     namespace: "common",
@@ -24,21 +28,20 @@ export default {
                 }
             }
 
-            const counterWrrapers = getComponents(
-                "counter-wrraper",
-                next.container
-            );
+            const counterWrraper = getComponent("counter-wrraper");
 
-            if (counterWrrapers.length) {
-                for (const counterWrraper of counterWrrapers) {
-                    new CounterWrraper(counterWrraper);
-                }
+            if (counterWrraper.component) {
+                new CounterWrraper(counterWrraper);
             }
         } catch (e) {
             console.error(e);
         }
     },
-    beforeLeave() {},
+    beforeLeave() {
+        spoilers.forEach((spoiler) => spoiler.destroy());
+        sliderItems.forEach((slider) => slider.destroy());
+        counterWrraper.destroy();
+    },
 
     afterLeave() {},
 };

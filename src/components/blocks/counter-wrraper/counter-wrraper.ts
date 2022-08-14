@@ -16,4 +16,8 @@ export default class CounterWrraper extends Component {
     updateMainCounter = (value: number) => {
         this.counterValue.textContent = `${value}`;
     };
+
+    destroy = () => {
+        this.modal.destroy();
+    };
 }

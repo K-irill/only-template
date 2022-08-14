@@ -1,3 +1,5 @@
 mixin header(props)
     header&attributes(attributes).header
-        //- h1.header__title Lorem ipsum
+        a(href='/').only__logo
+            +svg('only-logo')
+        +header-menu(dataJson.index.pages)

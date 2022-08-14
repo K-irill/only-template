@@ -23,4 +23,8 @@ export default class Spoiler extends Component {
 
         headBtn.classList.toggle("spoiler__btn_activ");
     };
+
+    destroy = () => {
+        this.nRoot.removeEventListener("click", this.clickHandler);
+    };
 }
